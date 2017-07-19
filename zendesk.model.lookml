@@ -46,5 +46,9 @@
         sql_on: ${ticket_history.ticket_id} = ${tickets.id}
         relationship: many_to_one
         
+      - join: organizations
+        sql_on: ${tickets.organization_id} = ${organizations.id}
+        relationship: many_to_one 
+        
 - explore: ticket_history_audit
   

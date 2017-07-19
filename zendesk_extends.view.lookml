@@ -55,7 +55,11 @@
   - dimension: is_solved       ### THIS ASSUMES NO DISTINCTION BETWEEN SOLVED AND CLOSED 
     type: yesno
     sql: ${status} = 'solved' OR ${status} = 'closed'
-    
+  
+  - dimension: organization_name
+    type: string
+    sql: ${organizations.name}
+
   - dimension: subject_category
     sql: |
         CASE
@@ -85,6 +89,16 @@
     filters: 
       is_solved: 'Yes'
         
+  - measure: count_distinct_organizations
+    type: count_distinct
+    sql: ${organization_id}
+      
+  - measure: count_orgs_submitting
+    type: count_distinct
+    sql: ${organizations.name}
+    filters:
+      organization_name: "-NULL"
+      
 ############ TIME FIELDS ###########
 
   - dimension_group: hidden_created
@@ -93,15 +107,15 @@
     timeframes: [day_of_week_index]  ###   use day_of_week
     sql: ${TABLE}.created_at
   
-  - dimension: created_day_of_week   
-    sql_case:
-      Sunday:    ${hidden_created_day_of_week_index} = 6
-      Monday:    ${hidden_created_day_of_week_index} = 0
-      Tuesday:   ${hidden_created_day_of_week_index} = 1
-      Wednesday: ${hidden_created_day_of_week_index} = 2
-      Thursday:  ${hidden_created_day_of_week_index} = 3
-      Friday:    ${hidden_created_day_of_week_index} = 4
-      Saturday:  ${hidden_created_day_of_week_index} = 5
+#   - dimension: created_day_of_week   
+#     sql_case:
+#       Sunday:    ${hidden_created_day_of_week_index} = 6
+#       Monday:    ${hidden_created_day_of_week_index} = 0
+#       Tuesday:   ${hidden_created_day_of_week_index} = 1
+#       Wednesday: ${hidden_created_day_of_week_index} = 2
+#       Thursday:  ${hidden_created_day_of_week_index} = 3
+#       Friday:    ${hidden_created_day_of_week_index} = 4
+#       Saturday:  ${hidden_created_day_of_week_index} = 5
     
   - dimension_group: time
     type: time
