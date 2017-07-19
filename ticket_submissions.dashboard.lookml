@@ -32,7 +32,7 @@
     listen:
       date: tickets.created_date
       organization: tickets.organization_name
-    
+
   - name: orgs_submitting
     type: single_value
     model: zendesk
@@ -46,7 +46,7 @@
     listen:
       date: tickets.created_date
       organization: tickets.organization_name
-    
+
   - name: avg_tickets_per_org
     title: Average tickets per org
     type: single_value
@@ -64,7 +64,7 @@
     listen:
       date: tickets.created_date
       organization: tickets.organization_name
-    
+
   - name: tickets_submitted_by_org
     title: Ticket submitted by organization
     type: looker_line
@@ -100,7 +100,7 @@
       date: tickets.created_date
       organization: tickets.organization_name
 
-    
+
   - name: peak_hours
     title: Peak hours
     type: looker_column
@@ -131,7 +131,7 @@
     listen:
       date: tickets.created_date
       organization: tickets.organization_name
-    
+
   - name: peak_days
     title: Peak days
     type: looker_column
@@ -162,4 +162,3 @@
     listen:
       date: tickets.created_date
       organization: tickets.organization_name
-    
