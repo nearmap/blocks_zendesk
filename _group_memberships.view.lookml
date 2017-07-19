@@ -1,5 +1,5 @@
 - view: _group_memberships
-  sql_table_name: zendesk._group_memberships
+  sql_table_name: zendesk.group_memberships
   fields:
 
   - dimension: id

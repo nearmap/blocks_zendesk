@@ -1,5 +1,5 @@
 - view: _organizations
-  sql_table_name: zendesk._organizations
+  sql_table_name: zendesk.organizations
   fields:
 
   - dimension: id
