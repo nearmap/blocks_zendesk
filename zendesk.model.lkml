@@ -7,6 +7,7 @@ include: "*.view"
 include: "*.dashboard"
 
 explore: tickets {
+  hidden: yes
   ## Add a filter to set a default time period to display in the Explore Window - this will make the queries run faster
   #   always_filter:
   #     tickets.created_date: 30 days
@@ -48,6 +49,7 @@ explore: tickets {
 
 ## Create "ticket_history" as new explore, because not all tickets have a history, so left_joining
 explore: ticket_history {
+  hidden:  yes
   join: tickets {
     sql_on: ${ticket_history.ticket_id} = ${tickets.id} ;;
     relationship: many_to_one
@@ -59,4 +61,6 @@ explore: ticket_history {
   }
 }
 
-explore: ticket_history_audit {}
+explore: ticket_history_audit {
+  hidden:  yes
+}
